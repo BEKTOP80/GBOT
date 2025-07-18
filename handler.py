@@ -7,7 +7,9 @@ from data import quiz_data
 
 from bot import DB_NAME, generate_options_keyboard
 
-dp = Dispatcher()
+from bot import dp
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Хэндлер на команду /start
 @dp.message(Command("start"))
