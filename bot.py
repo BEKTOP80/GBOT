@@ -48,8 +48,8 @@ async def create_table():
 
 async def main():
     await create_table()
-    await handler.dp.start_polling(handler.bot)
-    await callback.dp.start_polling(callback.bot)
+    await handler.dp.start_polling(bot)
+    await callback.dp.start_polling(bot)
 
 if __name__ == "__main__": 
     asyncio.run(main())
