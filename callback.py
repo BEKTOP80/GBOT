@@ -6,7 +6,9 @@ from aiogram import F
 from handler import get_question, get_quiz_index, get_user_score, update_quiz_index, update_user_score
 from data import quiz_data
 
-dp = Dispatcher()
+from bot import dp
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 @dp.callback_query(F.data == "right_answer")
 async def right_answer(callback: types.CallbackQuery):
