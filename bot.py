@@ -11,6 +11,8 @@ from aiogram.filters.command import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 from aiogram import F
 
+
+
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 logging.basicConfig(level=logging.INFO)
@@ -22,6 +24,15 @@ dp = Dispatcher()
 
 DB_NAME = 'quiz_bot.db'
 DICT_DATA = 'data/quiz_data.json'
+
+callback= 'data/callback.json'
+handler= 'data/handler.json'
+
+with open(callback, 'r') as j:
+    callback = json.loads(j.read())
+
+with open(handler, 'r') as j:
+    handler = json.loads(j.read())
     
 with open(DICT_DATA, 'r') as j:
     quiz_data = json.loads(j.read())
