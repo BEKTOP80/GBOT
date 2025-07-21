@@ -60,7 +60,7 @@ async def update_quiz_index(user_id, index):
 
 async def update_user_score(user_id, new_score):
     async with aiosqlite.connect(DB_NAME) as db:
-        await db.execute('INSERT INTO users (user_id, score) VALUES (?, ?) ON CONFLICT(user_id) DO UPDATE SET score = excluded.score', (user_id, new_score))
+        await db.execute('INSERT OR REPLACE INTO users (user_id, score) VALUES (?, ?) ON CONFLICT(user_id) DO UPDATE SET score = excluded.score', (user_id, new_score))
         await db.commit()   
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
