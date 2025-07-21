@@ -29,7 +29,7 @@ async def right_answer(callback: types.CallbackQuery):
     if current_question_index < len(quiz_data):
         await get_question(callback.message, callback.from_user.id)
     else:
-        await callback.message.answer(f"Это был последний вопрос. Квиз завершен!\nВаш результат: {current_score} правильных ответов")
+        await callback.message.answer(f"Это был последний вопрос. Квиз завершен!\nПравильных ответов: {current_score}")
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------  
 
@@ -53,4 +53,4 @@ async def wrong_answer(callback: types.CallbackQuery):
     if current_question_index < len(quiz_data):
         await get_question(callback.message, callback.from_user.id)
     else:
-        await callback.message.answer(f"Это был последний вопрос. Квиз завершен!\nВаш результат: {current_score} правильных ответов")
+        await callback.message.answer(f"Это был последний вопрос. Квиз завершен!\nПравильных ответов: {current_score}")
