@@ -22,6 +22,7 @@ async def right_answer(callback: types.CallbackQuery):
     current_question_index = await get_quiz_index(callback.from_user.id)
     current_score = await get_user_score(callback.from_user.id)
     current_question_index += 1
+    current_score += 1
     await update_quiz_index(callback.from_user.id, current_question_index)
     await update_user_score(callback.from_user.id, current_score)
 
@@ -50,4 +51,4 @@ async def wrong_answer(callback: types.CallbackQuery):
     if current_question_index < len(quiz_data):
         await get_question(callback.message, callback.from_user.id)
     else:
-        await callback.message.answer("Это был последний вопрос. Квиз завершен!")
+        await callback.message.answer("Это был последний вопрос. Квиз завершен!\nВаш результат: {current_score} правильных ответов")
