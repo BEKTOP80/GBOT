@@ -46,7 +46,7 @@ async def get_quiz_index(user_id):
 
 async def get_user_score(user_id):
     async with aiosqlite.connect(DB_NAME) as db:
-        async with db.execute('SELECT question_index FROM quiz_state WHERE user_id = (?)', (user_id, )) as cursor:
+        async with db.execute('SELECT score FROM users WHERE user_id = ?', (user_id, )) as cursor:
             results = await cursor.fetchone()
             if results is not None:
                 return results[0]
@@ -60,7 +60,7 @@ async def update_quiz_index(user_id, index):
 
 async def update_user_score(user_id, new_score):
     async with aiosqlite.connect(DB_NAME) as db:
-        await db.execute('INSERT INTO quiz_state (user_id, question_index) VALUES (?, ?)', (user_id, new_score))
+        await db.execute('INSERT INTO users (user_id, score) VALUES (?, ?) om conflict(user_id) DO UPDATE SET score = excluded.score', (user_id, new_score))
         await db.commit()   
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
