@@ -60,7 +60,7 @@ async def update_quiz_index(user_id, index):
 
 async def update_user_score(user_id, new_score):
     async with aiosqlite.connect(DB_NAME) as db:
-        await db.execute('INSERT INTO quiz_state (user_id, question_index) VALUES (33, 0)', (user_id, new_score))
+        await db.execute('INSERT INTO quiz_state (user_id, question_index) VALUES (?, ?)', (user_id, new_score))
         await db.commit()   
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
