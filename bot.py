@@ -29,6 +29,8 @@ DICT_DATA = 'data/quiz_data.json'
 with open(DICT_DATA, 'r') as j:
     quiz_data = json.loads(j.read())
 
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 def generate_options_keyboard(answer_options, right_answer):
     builder = InlineKeyboardBuilder()
 
@@ -39,6 +41,8 @@ def generate_options_keyboard(answer_options, right_answer):
 
     builder.adjust(1)
     return builder.as_markup()
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 async def create_table():
     async with aiosqlite.connect(DB_NAME) as db:

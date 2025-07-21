@@ -31,6 +31,8 @@ async def right_answer(callback: types.CallbackQuery):
     else:
         await callback.message.answer("Это был последний вопрос. Квиз завершен!\nВаш результат: {current_score} правильных ответов")
 
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------  
+
 @dp.callback_query(F.data == "wrong_answer")
 async def wrong_answer(callback: types.CallbackQuery):
     await callback.bot.edit_message_reply_markup(
