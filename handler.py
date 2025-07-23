@@ -77,5 +77,5 @@ async def cmd_quiz(message: types.Message):
 
 # Хэндлер на команду /help
 @dp.message(Command("help"))
-async def cmd_start(message: types.Message):
+async def cmd_help(message: types.Message):
     await message.answer("Команды бота:\n/start - запустить бота\n/help - помощь\n/quiz - начать игру")
